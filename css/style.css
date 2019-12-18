@@ -1,0 +1,181 @@
+@import url('normalize.css');
+@font-face{
+	font-family: Agabus;
+	src: url(../res/font/agabus.ttf);
+}
+@font-face{
+	font-family: Karet;
+	src: url(../res/font/karet.ttf);
+}
+
+#body {
+	background-color: #949EAF;
+	color: black;
+	font-size: 18px;
+	font-family: Karet;
+}
+
+
+#main_title {
+	font-family: Agabus;
+	font-size: 28px;
+}
+#menu_img {
+	width: 28px;
+	height: 28px;
+}
+#menu_block {
+	background-color: #61656C;
+}
+#menu_btn_text {
+	color: black;
+	font-weight: bold;
+}
+#dropdownMenuButton {
+	background-color: #dce3ef;
+}
+#log_out_btn {
+	background-color: #dce3ef;
+}
+#log_in_btn {
+	background-color: #dce3ef;
+	border-width: thin;
+}
+#sign_in_btn {
+	background-color: #dce3ef;
+	border-width: thin;
+}
+#menu_elements_block{
+	background-color: #dce3ef;
+	border-width: thin;	
+}
+.dropdown-item {
+	font-size: 20px;
+}
+#user_info_text {
+	font-size: 16px;
+}
+#log_out_btn_text {
+	font-size: 16px;
+}
+#log_in_btn_text {
+	font-size: 16px;
+}
+#sign_in_btn_text {
+	font-size: 16px;
+}
+
+
+#page_title{
+	font-family: Agabus;
+	font-size: 26px;
+}
+#site_content {
+	background-color: #F8F8F8;
+}
+
+
+#footer {
+	background-color: #61656C;
+}
+#footer_title {
+	font-family: Agabus;
+	font-size: 24px;
+}
+#footer_menu_block li a {
+	color: black;
+	text-decoration: underline;
+}
+#footer_menu_block li a:hover {
+	text-decoration: none;
+	color: #DFF9FE;
+}
+#footer_menu_block {
+	list-style: none;
+}
+#footer_menu_block li a {
+	font-size: 20px;
+}
+
+
+@media (min-width: 480px){
+	#main_title {
+		font-size: 32px;
+	}
+	#body {
+		font-size: 20px;
+	}
+	.dropdown-item {
+		font-size: 22px;
+	}
+	#user_info_text {
+		font-size: 18px;
+	}
+	#log_out_btn_text {
+		font-size: 18px;
+	}	
+	#log_in_btn_text {
+		font-size: 18px;
+	}	
+	#sign_in_btn_text {
+		font-size: 18px;
+	}
+	#page_title {
+		font-size: 28px;
+	}
+	#footer_title {
+		font-size: 26px;
+	}
+	#footer_menu_block li a {
+		font-size: 22px;
+	}
+}
+@media (min-width: 760px){
+	#main_title {
+		font-size: 36px;
+	}
+	#body {
+		font-size: 22px;
+	}
+	.dropdown-item {
+		font-size: 24px;
+	}
+	#user_info_text {
+		font-size: 20px;
+	}
+	#log_out_btn_text {
+		font-size: 20px;
+	}	
+	#log_in_btn_text {
+		font-size: 20px;
+	}	
+	#sign_in_btn_text {
+		font-size: 20px;
+	}
+	#page_title {
+		font-size: 30px;
+	}
+	#menu_img {
+		width: 32px;
+		height: 32px;
+	}
+	#menu_btn_text {
+		font-size: 26px;
+	}
+	#footer_title {
+		font-size: 28px;
+	}
+	#footer_menu_block li a {
+		font-size: 24px;
+	}
+}
+
+
+/*Optional codes*/
+#user_info_text {
+	display: none;
+}
+#log_out_btn{
+	display: none;
+}
+/*--------------*/
