@@ -1,0 +1,114 @@
+#block_lable {
+	font-size: 22px;
+}
+#row_label {
+	font-size: 20px;
+}
+#log_in_inputEmail {
+	font-family: Josefin Sans;
+	border-color: #696969;
+	border-width: thin;
+	background-color: #dce3ef;
+}
+#log_in_inputPassword {
+	font-family: Josefin Sans;
+	border-color: #696969;
+	border-width: thin;
+	border-top-right-radius: 0px; 
+	border-bottom-right-radius: 0px; 
+	background-color: #dce3ef;
+}
+#log_in_show_password_btn {
+	background-color: #dce3ef;
+	border: solid;
+	border-color: #696969;
+	border-width: thin;
+}
+#log_in_btn{
+	background-color: #dce3ef;
+	color: black;
+	font-size: 18px;
+}
+#sign_in_inputNickname {
+	font-family: Josefin Sans;
+	border-color: #696969;
+	border-width: thin;
+	background-color: #dce3ef;
+}
+#sign_in_inputEmail {
+	font-family: Josefin Sans;
+	border-color: #696969;
+	border-width: thin;
+	background-color: #dce3ef;
+}
+#sign_in_inputPassword {
+	font-family: Josefin Sans;
+	border-color: #696969;
+	border-width: thin;
+	border-top-right-radius: 0px; 
+	border-bottom-right-radius: 0px; 
+	background-color: #dce3ef;
+}
+#sign_in_show_password_btn {
+	background-color: #dce3ef;
+	border: solid;
+	border-color: #696969;
+	border-width: thin;
+}
+#sign_in_inputPasswordRepeat {
+	font-family: Josefin Sans;
+	border-color: #696969;
+	border-width: thin;
+	border-top-right-radius: 0px; 
+	border-bottom-right-radius: 0px; 
+	background-color: #dce3ef;
+}
+#sign_in_show_password_repeat_btn {
+	background-color: #dce3ef;
+	border: solid;
+	border-color: #696969;
+	border-width: thin;
+}
+#sign_in_btn{
+	background-color: #dce3ef;
+	color: black;
+	font-size: 18px;
+}
+
+#necessary {
+	font-family: Josefin Sans;
+	color: #E53838;
+}
+#show_password_img{
+	width: 33px;
+	height: 33px;	
+}
+
+@media (min-width: 480px){
+	#block_lable {
+		font-size: 24px;
+	}
+	#row_label {
+		font-size: 22px;
+	}
+	#log_in_btn{
+		font-size: 20px;
+	}
+	#sign_in_btn{
+		font-size: 20px;
+	}
+}
+@media (min-width: 760px){
+	#block_lable {
+		font-size: 26px;
+	}
+	#row_label {
+		font-size: 24px;
+	}
+	#log_in_btn{
+		font-size: 22px;
+	}
+	#sign_in_btn{
+		font-size: 22px;
+	}
+}

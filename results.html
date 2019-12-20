@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Hostel_Gym_7</title>
+		
+		<!-- <link rel="stylesheet" type="text/css" href="css/normalize.css"> -->
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/forms.css">
+		<link rel="stylesheet" type="text/css" href="css/results.css">
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+		<script src="js/forms.js"></script>
+	</head>
+
+	<body id="body">
+
+		<div class="modal fade" id="log_in_block" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+
+					<div class="modal-header">
+						<h5 class="modal-title" id="block_lable">Log in</h5>
+						<button class="close" data-dismiss="modal" aria-label="Close" onclick="ResetLogin()">
+							<span aria-hidden="true" class="p-1">&times;</span>
+						</button>
+					</div>
+
+					<div class="modal-body">
+						<div class="container-fluid">
+							<form id="log_in_form" action="#" onsubmit="return false">
+
+								<div class="form-group">
+									<label id="row_label" for="log_in_inputEmail" class="">Email address<span id="necessary">*</span></label>
+									<input type="text" class="form-control" id="log_in_inputEmail" name="email" aria-descridby="emailHelp" placeholder="Email">
+									<small id="emailHelp" class="form-text text-muted">Enter your email</small>
+								</div>
+
+								<div class="form-group">
+									<label id="row_label" for="log_in_inputPassword" class="">Password<span id="necessary">*</span></label>
+									<div class=" d-flex">
+										<input type="password" class="form-control" id="log_in_inputPassword" name="password" placeholder="Password">
+										<button id="log_in_show_password_btn" class="rounded-right" onclick="ShowPassword('log_in_inputPassword')">
+											<img id="show_password_img" src="res/img/show_password.png">
+										</button>
+									</div>	
+									<small id="passwordHelp" class="form-text text-muted">Password have to consider more then 3 and less then 50 characters (letters and numbers)</small>
+								</div>
+
+								<button id="log_in_btn" type="submit" class="btn btn-primary m-2 border-dark pt-1 pb-1" onclick="LoginFormResult()">Log in</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="sign_in_block" tabindex="-1" role="dialog" aria-labelledby="signinModal" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="block_lable">Sign in</h5>
+						<button class="close" data-dismiss="modal" aria-label="Close" onclick="ResetSignin()">
+							<span aria-hidden="true" class="p-1">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="container-fluid">
+							<form id="sign_in_form" action="#" onsubmit="return false">
+
+								<div class="form-group">
+									<label id="row_label" for="sign_in_inputNickname" class="">Nickname<span id="necessary">*</span></label>
+									<input type="text" class="form-control" id="sign_in_inputNickname" name="nickname" aria-descridby="emailHelp" placeholder="Email">
+									<small id="emailHelp" class="form-text text-muted">Enter your nickname (letters and numbers)</small>
+								</div>
+								<div class="form-group">
+									<label id="row_label" for="sign_in_inputEmail" class="">Email address<span id="necessary">*</span></label>
+									<input type="text" class="form-control" id="sign_in_inputEmail" name="email" aria-descridby="emailHelp" placeholder="Email">
+									<small id="emailHelp" class="form-text text-muted">Enter your email</small>
+								</div>
+								<div class="form-group">
+									<label id="row_label" for="sign_in_inputPassword" class="">Password<span id="necessary">*</span></label>
+									<div class=" d-flex">
+										<input type="password" class="form-control" id="sign_in_inputPassword" name="password" placeholder="Password">
+										<button id="sign_in_show_password_btn" class="rounded-right" onclick="ShowPassword('sign_in_inputPassword')">
+											<img id="show_password_img" src="res/img/show_password.png">
+										</button>
+									</div>	
+									<small id="passwordHelp" class="form-text text-muted">Password have to consider more then 3 and less then 50 characters (letters and numders)</small>
+								</div>
+								<div class="form-group">
+									<label id="row_label" for="sign_in_inputPasswordRepeat" class="">Repeat password<span id="necessary">*</span></label>
+									<div class=" d-flex">
+										<input type="password" class="form-control" id="sign_in_inputPasswordRepeat" name="password_repeat" placeholder="Password">
+										<button id="sign_in_show_password_repeat_btn" class="rounded-right" onclick="ShowPassword('sign_in_inputPasswordRepeat')">
+											<img id="show_password_img" src="res/img/show_password.png">
+										</button>
+									</div>	
+									<small id="passwordHelp" class="form-text text-muted">Repeat your password</small>
+								</div>
+								<button id="sign_in_btn" type="submit" class="btn btn-primary m-2 border-dark pt-1 pb-1" onclick="SigninFormResult()">Sign in</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<header id="header" class="container col m-0 p-0">
+			<section id="main_title_block" class="row d-flex justify-content-center m-0">
+				<h1 id="main_title" class="col-12 d-flex justify-content-center mt-2">Welcome to the gym</h1>
+				<h1 id="main_title" class="col-12 d-flex justify-content-center">body</h1>
+			</section>
+			<section id="menu_block" class="container d-flex col m-0">
+				<div id="dropdown" class="dropdown p-2 offset-1 col-2">
+					<button id="dropdownMenuButton" class="btn-secondary border-dark d-flex align-items-center p-lg-2p-xl-3" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					    <img id="menu_img" class="d-flex align-items-center" src="res/img/menu.png" alt="menu">
+					    <p id="menu_btn_text" class="mb-0 d-none align-content-center d-xl-block d-lg-block d-md-block ml-3 ml-xl-4 pb-1">Меню</p>
+					</button>
+					<div id="menu_elements_block" class="dropdown-menu border-dark" aria-labelledby="dropdownMenuButton">
+					    <a class="dropdown-item pt-2 pb-2 border-bottom" href="index.html">Головна</a>
+					    <a class="dropdown-item pt-2 pb-2" href="#">Інформація</a>
+					    <a class="dropdown-item pt-2 pb-2" href="#">Відгуки та пропозиції</a>
+					    <a class="dropdown-item pt-2 pb-2" href="#">Тренування</a>
+					</div>	
+				</div>
+				<div id="user_info" class="container d-flex align-items-center justify-content-end col-9 col-md-8 offset-md-1 col-lg-8 offset-lg-1 col-xl-8 offset-xl-1 m-0">
+						<p id="user_info_text" class="mb-0">Username:<span id="nickname"> Spichka.vin</span></p>
+						<button id="log_out_btn_main" class="ml-3 border-dark">
+							<p id="log_out_btn_text" class="m-0">Log out</p>
+						</button>
+						<button id="log_in_btn_main" class="border-dark">
+							<p id="log_in_btn_text" class="m-0" data-toggle="modal" data-target="#log_in_block">Log in</p>
+						</button>
+						<button id="sign_in_btn_main" class="ml-3 border-dark">
+							<p id="sign_in_btn_text" class="m-0" data-toggle="modal" data-target="#sign_in_block">Sign in</p>
+						</button>
+				</div>
+			</section>
+		</header>
+		
+		<main id="site_content" class="container col-10 p-0 pb-4 mt-0 pt-3 pt-md-4 pt-lg-4 pt-xl-4">
+			<div id="treining_menu" class="container offset-1 col-10 offset-sm-2 offset-lg-3 offset-xl-3 col-sm-8 col-lg-6 col-xl-6 d-flex justify-content-center p-3 rounded-right rounded-left">
+				<a id="training_page_btn_text" class="p-0" href="training.html">
+					<button id="training_page_btn" class="pl-3 pr-3 pl-md-4 pr-md-4 pl-lg-4 pr-lg-4 pl-xl-5 pr-xl-5 pt-2 pb-2 rounded-left">
+						Тренування
+					</button>
+				</a>
+				<a id="res_page_btn_text" class="p-0" href="results.html">
+					<button id="res_page_btn" class="rounded-right pl-3 pr-3 pl-md-4 pr-md-4 pl-lg-4 pr-lg-4 pl-xl-5 pr-xl-5 pt-2 pb-2">
+						Результати
+					</button>
+				</a>
+			</div>
+			
+			<div class="container offset-1 col-10 offset-sm-2 offset-lg-3 offset-xl-3 col-sm-8 col-lg-6 col-xl-6 p-0 mb-3">
+				<div id="search_type_box" class="d-flex col-12 align-items-center p-0 mt-3">
+					<button class="dropdown-toggle col-1 pl-1 pr-1" id="type_dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+					<p id="search_type_name" class="m-0 col-11 d-flex justify-content-center p-0">Тренування</p>
+					<div class="dropdown-menu" aria-labelledby="type_dropdownMenuButton">
+					    <a class="dropdown-item" href="#">Тренування</a>
+					    <a class="dropdown-item" href="#">Вправа</a>
+					</div>
+				</div>
+				<div id="search_last_box" class="d-flex col-12 align-items-center p-0 mt-3">
+					<button class="dropdown-toggle col-1 pl-1 pr-1" id="last_dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+					<p id="search_type_name" class="m-0 col-11 d-flex justify-content-center p-0">Тренування</p>
+					<div class="dropdown-menu" aria-labelledby="last_dropdownMenuButton">
+					    <a class="dropdown-item" href="#">Traning - 1</a>
+					    <a class="dropdown-item" href="#">Traning - 2</a>
+					</div>
+				</div>
+				<button id="add_res_btn" class="mt-3">Додати результати</button>
+			</div>
+			<div id="add_res_block" class="container offset-1 col-10 offset-sm-2 offset-lg-3 offset-xl-3 col-sm-8 col-lg-6 col-xl-6 p-0 mb-3 border-dark">
+				<div class="container pt-1 col-12 d-flex">
+					<p class="m-0 p-0 col-5 d-flex justify-content-center align-items-center">Дата<span>: </span></p>
+					<input type="text" class="form-control p-0 pl-1" id="data_input" name="date" placeholder="xx.xx.xxxx">
+				</div>
+				<div class="container pt-1 col-12 d-flex">
+					<p class="m-0 p-0 col-5 d-flex justify-content-center">Вправа<span>: </span></p>
+					<p id="exercise_name" class="col-7 mb-1 p-0 d-flex justify-content-center">Жим</p>
+				</div>
+				<form id="res_input_form" class="container">		
+					<div id="input_res_box" class="container col-12 col-md-10 col-xl-8 d-flex p-0 mb-2 rounded">
+						<label id="ex_try_num" for="weight_input count_input" class="col-1 d-flex justify-content-center align-items-center p-0 m-0">1</label>
+						<input type="numbers" class="form-control p-0 col-5" id="weight_input" name="weight" placeholder=" Вага">
+						<input type="numbers" class="form-control p-0 col-6" id="count_input" name="count" placeholder=" Кількість">
+					</div>
+
+					<div class="col-12 p-0 mb-2 d-flex justify-content-center">
+						<button id="add_new_exercise" class="p-1 col-4 rounded">Додати</button>		
+					</div>
+				</form>
+				<div class="col-12 p-0 mb-2 d-flex justify-content-center">
+					<button id="confirm_training_btn" class="p-1 col-4 rounded">Створити</button>
+				</div>
+			</div>
+
+			<div id="my_results_by_tr">
+				<h2 id="second_title" class="d-flex justify-content-center">Результати</h2>
+				<div id="add_res_block" class="container offset-1 col-10 offset-sm-2 offset-lg-3 offset-xl-3 col-sm-8 col-lg-6 col-xl-6 p-0 mb-3 border-dark">
+					<div class="container pt-1 col-12 d-flex">
+						<p class="m-0 p-0 col-5 d-flex justify-content-center align-items-center">Дата<span>: </span></p>
+						<p class="p-0 pl-1 m-0 d-flex justify-content-center align-items-center">29.11.1999</p>
+					</div>
+					<div class="container pt-1 col-12 d-flex mb-1">
+						<p class="m-0 p-0 col-5 d-flex justify-content-center">Вправа<span>: </span></p>
+						<p id="exercise_name" class="col-7 m-0 p-0 d-flex justify-content-center">Жим</p>
+					</div>
+					<div id="res_output_form" class="container">
+						<div id="output_res_box" class="container col-12 col-md-10 col-xl-8 d-flex p-0 mb-2 rounded">
+							<label id="ex_try_num" class="col-1 d-flex justify-content-center align-items-center p-0 m-0">№</label>
+							<p class="p-0 m-0 col-5 d-flex justify-content-center align-items-center" id="weight_output">Вага</p>
+							<p class="p-0 m-0 col-6 d-flex justify-content-center align-items-center" id="count_output">Кількість</p>
+						</div>
+						<div id="output_res_box" class="container col-12 col-md-10 col-xl-8 d-flex p-0 mb-2 rounded">
+							<label id="ex_try_num" class="col-1 d-flex justify-content-center align-items-center p-0 m-0">1</label>
+							<p class="p-0 m-0 col-5 d-flex justify-content-center align-items-center" id="weight_output">Вага</p>
+							<p class="p-0 m-0 col-6 d-flex justify-content-center align-items-center" id="count_output">Кількість</p>
+						</div>
+					</div>
+					<div class="container pt-1 col-12 d-flex mb-1">
+						<p class="m-0 p-0 col-5 d-flex justify-content-center">Вправа<span>: </span></p>
+						<p id="exercise_name" class="col-7 m-0 p-0 d-flex justify-content-center">Жим</p>
+					</div>
+					<div id="res_output_form" class="container">
+						<div id="output_res_box" class="container col-12 col-md-10 col-xl-8 d-flex p-0 mb-2 rounded">
+							<label id="ex_try_num" class="col-1 d-flex justify-content-center align-items-center p-0 m-0">№</label>
+							<p class="p-0 m-0 col-5 d-flex justify-content-center align-items-center" id="weight_output">Вага</p>
+							<p class="p-0 m-0 col-6 d-flex justify-content-center align-items-center" id="count_output">Кількість</p>
+						</div>
+						<div id="output_res_box" class="container col-12 col-md-10 col-xl-8 d-flex p-0 mb-2 rounded">
+							<label id="ex_try_num" class="col-1 d-flex justify-content-center align-items-center p-0 m-0">1</label>
+							<p class="p-0 m-0 col-5 d-flex justify-content-center align-items-center" id="weight_output">Вага</p>
+							<p class="p-0 m-0 col-6 d-flex justify-content-center align-items-center" id="count_output">Кількість</p>
+						</div>
+					</div>
+					<div class="container pt-1 col-12 d-flex mb-1">
+						<p class="m-0 p-0 col-5 d-flex justify-content-center">Вправа<span>: </span></p>
+						<p id="exercise_name" class="col-7 m-0 p-0 d-flex justify-content-center">Жим</p>
+					</div>
+					<div id="res_output_form" class="container">
+						<div id="output_res_box" class="container col-12 col-md-10 col-xl-8 d-flex p-0 mb-2 rounded">
+							<label id="ex_try_num" class="col-1 d-flex justify-content-center align-items-center p-0 m-0">№</label>
+							<p class="p-0 m-0 col-5 d-flex justify-content-center align-items-center" id="weight_output">Вага</p>
+							<p class="p-0 m-0 col-6 d-flex justify-content-center align-items-center" id="count_output">Кількість</p>
+						</div>
+						<div id="output_res_box" class="container col-12 col-md-10 col-xl-8 d-flex p-0 mb-2 rounded">
+							<label id="ex_try_num" class="col-1 d-flex justify-content-center align-items-center p-0 m-0">1</label>
+							<p class="p-0 m-0 col-5 d-flex justify-content-center align-items-center" id="weight_output">Вага</p>
+							<p class="p-0 m-0 col-6 d-flex justify-content-center align-items-center" id="count_output">Кількість</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="my_results_by_ex">
+				<h2 id="second_title" class="d-flex justify-content-center">Результати</h2>
+				<div id="add_res_block" class="container offset-1 col-10 offset-sm-2 offset-lg-3 offset-xl-3 col-sm-8 col-lg-6 col-xl-6 p-0 mb-3 border-dark">
+					<div class="container pt-1 col-12 d-flex">
+						<p class="m-0 p-0 col-5 d-flex justify-content-center align-items-center">Дата<span>: </span></p>
+						<p class="p-0 pl-1 m-0 d-flex justify-content-center align-items-center">29.11.1999</p>
+					</div>
+					<div class="container pt-1 col-12 d-flex mb-1">
+						<p class="m-0 p-0 col-5 d-flex justify-content-center">Вправа<span>: </span></p>
+						<p id="exercise_name" class="col-7 m-0 p-0 d-flex justify-content-center">Жим</p>
+					</div>
+					<div id="res_output_form" class="container">
+						<div id="output_res_box" class="container col-12 col-md-10 col-xl-8 d-flex p-0 mb-2 rounded">
+							<label id="ex_try_num" class="col-1 d-flex justify-content-center align-items-center p-0 m-0">№</label>
+							<p class="p-0 m-0 col-5 d-flex justify-content-center align-items-center" id="weight_output">Вага</p>
+							<p class="p-0 m-0 col-6 d-flex justify-content-center align-items-center" id="count_output">Кількість</p>
+						</div>
+						<div id="output_res_box" class="container col-12 col-md-10 col-xl-8 d-flex p-0 mb-2 rounded">
+							<label id="ex_try_num" class="col-1 d-flex justify-content-center align-items-center p-0 m-0">1</label>
+							<p class="p-0 m-0 col-5 d-flex justify-content-center align-items-center" id="weight_output">Вага</p>
+							<p class="p-0 m-0 col-6 d-flex justify-content-center align-items-center" id="count_output">Кількість</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</main>
+		
+		<footer id="footer" class="container col pt-1 pb-3">
+			<h5 id="footer_title" class="d-flex justify-content-center">Меню:</h5>
+			<div id="footer_menu" class="row d-flex justify-content-center">   
+				<ul id="footer_menu_block" class="text-center mb-0 pl-0">
+				  <li class="p-1">
+				  	<a href ="index.html">Головна</a>
+				  </li>
+				  <li class="p-1">
+				  	<a href="#">Інформація</a>
+				  </li>
+
+				  <li class="p-1">
+				  	<a href="#">Тренування</a>
+				  </li>
+				  <li class="p-1">
+				  	<a href="#">Відгуки та пропозиції</a>
+				  </li>	
+				</ul>
+			</div>
+		</footer>		
+	</body>
+
+</html>

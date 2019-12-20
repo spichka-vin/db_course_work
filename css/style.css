@@ -33,21 +33,19 @@
 }
 #dropdownMenuButton {
 	background-color: #dce3ef;
+	border-radius: 0px;
 }
-#log_out_btn {
+#log_out_btn_main {
 	background-color: #dce3ef;
 }
-#log_in_btn {
+#log_in_btn_main {
 	background-color: #dce3ef;
-	border-width: thin;
 }
-#sign_in_btn {
+#sign_in_btn_main {
 	background-color: #dce3ef;
-	border-width: thin;
 }
-#menu_elements_block{
+.dropdown-menu {
 	background-color: #dce3ef;
-	border-width: thin;	
 }
 .dropdown-item {
 	font-size: 20px;
@@ -169,13 +167,21 @@
 		font-size: 24px;
 	}
 }
+@media (min-width: 1020) {
+	#page_title {
+		font-size: 32px;
+	}
+	#main_title {
+		font-size: 34px;
+	}
+}
 
 
 /*Optional codes*/
 #user_info_text {
 	display: none;
 }
-#log_out_btn{
+#log_out_btn_main	{
 	display: none;
 }
 /*--------------*/

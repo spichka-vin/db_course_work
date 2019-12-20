@@ -1,0 +1,121 @@
+#site_content {
+	font-size: 18px;
+}
+
+#treining_menu {
+	background-color: #949EAF;
+}
+#training_page_btn {
+	background-color: #303030;
+	border-right: none;
+	border-color: #303030;
+	color: #CCCCCC;
+}
+#res_page_btn {
+	border-left: none;
+	background-color: #CCCCCC;
+	color: black;
+}
+#trainings_block {
+	border: solid;
+	border-width: medium;
+	border-color: #303030;
+}
+#element_top {
+	border: solid;
+	border-width: thin;
+	color:  #CCCCCC;
+	border-color: #303030;
+	background-color: #303030;
+}
+.dropdown-toggle {
+	color: black;
+	border-radius: 0px;
+	border-color: #CCCCCC;
+	background-color: #CCCCCC;
+	font-size: 18px;
+}
+#go_to_res_btn {
+	border-radius: 0px;
+	background-color: #CCCCCC;
+}
+#delete_training_btn {
+	border-radius: 0px;
+	background-color: #CCCCCC;	
+	font-weight: bold;
+}
+#ex_num {
+	border: solid;
+	border-width: thin;
+}
+#ex_name {
+	border: solid;
+	border-width: thin;
+}
+#create_traning_button {
+	background-color: #303030;
+	border-color: #303030;
+	color: #CCCCCC;
+}
+#new_training_name {
+	border: solid;
+	border-width: thin;
+	border-color: #303030;
+}
+#exercise_table {
+	border: solid;
+}
+#new_numer {
+	border-right: solid;
+	border-width: thin;
+}
+#new_muscle_input_box {
+	border-bottom: solid;
+	border-left: solid;
+	border-width: thin;
+}
+#new_exercise_input_box {
+	border-left: solid;
+	border-width: thin;
+}
+#new_input {
+	border: solid;
+	border-width: thin;
+}
+.dropdown-toggle {
+	font-size: 18px;
+}
+#confirm_training_btn {
+	background-color: #CCCCCC;
+}
+#add_new_exercise{
+	background-color: #CCCCCC;
+}
+
+@media (min-width: 480px){
+	#site_content {
+		font-size: 20px;
+	}
+	#treining_menu {
+		font-size: 22px;
+	}
+	.dropdown-toggle{
+		font-size: 20px;
+	}
+}
+@media (min-width: 760px){
+	#site_content {
+		font-size: 22px;
+	}
+	#treining_menu {
+		font-size: 24px;
+	}
+	.dropdown-toggle{
+		font-size: 22px;
+	}
+}
+@media (min-width: 1020px){
+	#treining_menu {
+		font-size: 26px;
+	}
+}

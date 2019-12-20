@@ -1,0 +1,97 @@
+#site_content {
+	font-size: 18px;
+}
+
+#treining_menu {
+	background-color: #949EAF;
+}
+#res_page_btn {
+	background-color: #303030;
+	border-right: none;
+	border-color: #303030;
+	color: #CCCCCC;
+}
+#training_page_btn {
+	border-left: none;
+	background-color: #CCCCCC;
+		color: black;
+}
+.dropdown-toggle {
+	font-size: 18px;
+}
+#search_type_box {
+	border: solid;
+	border-width: thin;
+	background-color: #CCCCCC;
+}
+#search_last_box {
+	border: solid;
+	border-width: thin;
+	background-color: #CCCCCC;
+}
+#add_res_btn {
+	background-color: #303030;
+	border-color: #303030;
+	color: #CCCCCC;
+}
+#add_res_block {
+	border: solid;
+	background-color: #CCCCCC;
+}
+#input_res_box {
+	border: solid;
+	border-width: thin;
+}
+#confirm_training_btn {
+	background-color: #303030;
+	border-color: #303030;
+	color: #CCCCCC;
+}
+#second_title {
+	font-family: Agabus;
+	font-size: 24px;
+}
+#res_output_form {
+	border-top: solid;
+	border-bottom: solid;
+	border-width: thin;
+}
+
+
+
+
+
+
+@media (min-width: 480px){
+	#site_content {
+		font-size: 20px;
+	}
+	#treining_menu {
+		font-size: 22px;
+	}
+	.dropdown-toggle{
+		font-size: 20px;
+	}
+	#second_title {
+		font-size: 26px;
+	}
+}
+@media (min-width: 760px){
+	#site_content {
+		font-size: 22px;
+	}
+	#treining_menu {
+		font-size: 24px;
+	}
+	.dropdown-toggle{
+		font-size: 22px;
+	}
+	#second_title {
+		font-size: 28px;
+	}
+}
+@media (min-width: 1020px){
+	#treining_menu {
+		font-size: 26px;
+	}
+}
