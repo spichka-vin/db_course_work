@@ -1,3 +1,27 @@
+function httpGetAsync(theUrl, callback)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.responseText);
+    }
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+    xmlHttp.send(null);
+}
+function httpPostAsync(theUrl,data, callback)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.responseText);
+    }
+    xmlHttp.open("POST", theUrl, true); // true for asynchronous 
+    xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xmlHttp.send(data);
+}
+
+
+
 function GetValues(el){
 	let values = el.serializeArray();
 	return values;
@@ -51,6 +75,7 @@ function ShowPassword(el) {
 }
 
 
+
 function LoginErrorsMatching(arr){
 	let flag = true;
 	let tmp;
@@ -85,11 +110,22 @@ function ResetLogin(){
 }
 function LoginFormResult(){
 	let form_array = GetValues($("#log_in_form"));
+	let tmp = LoginCompression(form_array);
+	console.log(tmp);
 	let flag = LoginErrorsMatching(form_array);
 	if(flag){
-		console.log(form_array);
+		httpGetAsync('/login', (res)=>LoginCorrect(res));
 	}		
 }
+function LoginCorrect(arg){
+	console.log(arg);
+}
+
+
+
+
+
+
 
 
 function SigninErrorsMatching(arr){
@@ -97,7 +133,7 @@ function SigninErrorsMatching(arr){
 	let tmp;
 
 	tmp = PasswordCheck(arr[0].value);
-	if(arr[0].value.length == 0 || tmp != null || arr[0].value.length > 100){
+	if(arr[0].value.length == 0 || tmp != null || arr[0].value.length > 50){
 		flag = false;
 		InputBorderChange($("#sign_in_inputNickname"));
 	}
@@ -144,10 +180,35 @@ function ResetSignin(){
 	document.getElementById("sign_in_inputPassword").value = "";
 	document.getElementById("sign_in_inputPasswordRepeat").value = "";
 }
+function SigninDataConverter(arg){
+	let res = {
+		'email': arg[1].value,
+		'nickname': arg[0].value,
+		'password': arg[2].value,
+		'passwordRepeat':arg[3].value
+	}
+	return res;
+}
 function SigninFormResult(){
-	let form_array = GetValues($("#sign_in_form"));	
+	let form_array = GetValues($("#sign_in_form"));
 	let flag = SigninErrorsMatching(form_array);
+	let form = SigninDataConverter(form_array);
+	console.log(form);
 	if(flag){
-		console.log(form_array);
+		//httpPostAsync("/signin",form ,(res) => SigninAcception(res));
+		$.ajax(
+	   {
+	        url: "/signin",
+	        type: "POST",
+	        data: form,
+	        dataType: 'json',
+	        async: true,
+	        success: function(msg) {
+	            alert(msg);
+	        }
+	    });
 	}		
+}
+function SigninAcception(arg){
+	console.log(arg);
 }

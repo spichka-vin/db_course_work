@@ -117,15 +117,15 @@
 			</section>
 			<section id="menu_block" class="container d-flex col m-0">
 				<div id="dropdown" class="dropdown p-2 offset-1 col-2">
-					<button id="dropdownMenuButton" class="btn-secondary border-dark d-flex align-items-center p-lg-2p-xl-3" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<button id="dropdownMenuButton" class="btn-secondary border-dark d-flex align-items-center pl-lg-2 pr-lg-2 pl-xl-3 pr-xl-3" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					    <img id="menu_img" class="d-flex align-items-center" src="res/img/menu.png" alt="menu">
 					    <p id="menu_btn_text" class="mb-0 d-none align-content-center d-xl-block d-lg-block d-md-block ml-3 ml-xl-4 pb-1">Меню</p>
 					</button>
 					<div id="menu_elements_block" class="dropdown-menu border-dark" aria-labelledby="dropdownMenuButton">
-					    <a class="dropdown-item pt-2 pb-2 border-bottom" href="index.html">Головна</a>
+					    <a class="dropdown-item pt-2 pb-2 border-bottom" href="/index.html">Головна</a>
 					    <a class="dropdown-item pt-2 pb-2" href="#">Інформація</a>
 					    <a class="dropdown-item pt-2 pb-2" href="#">Відгуки та пропозиції</a>
-					    <a class="dropdown-item pt-2 pb-2" href="#">Тренування</a>
+					    <a class="dropdown-item pt-2 pb-2" href="/index.html">Тренування</a>
 					</div>	
 				</div>
 				<div id="user_info" class="container d-flex align-items-center justify-content-end col-9 col-md-8 offset-md-1 col-lg-8 offset-lg-1 col-xl-8 offset-xl-1 m-0">
@@ -145,12 +145,12 @@
 		
 		<main id="site_content" class="container col-10 p-0 pb-4 mt-0 pt-3 pt-md-4 pt-lg-4 pt-xl-4">
 			<div id="treining_menu" class="container offset-1 col-10 offset-sm-2 offset-lg-3 offset-xl-3 col-sm-8 col-lg-6 col-xl-6 d-flex justify-content-center p-3 rounded-right rounded-left">
-				<a id="training_page_btn_text" class="p-0" href="training.html">
+				<a id="training_page_btn_text" class="p-0" href="/training.html">
 					<button id="training_page_btn" class="pl-3 pr-3 pl-md-4 pr-md-4 pl-lg-4 pr-lg-4 pl-xl-5 pr-xl-5 pt-2 pb-2 rounded-left">
 						Тренування
 					</button>
 				</a>
-				<a id="res_page_btn_text" class="p-0" href="results.html">
+				<a id="res_page_btn_text" class="p-0" href="/results.html">
 					<button id="res_page_btn" class="rounded-right pl-3 pr-3 pl-md-4 pr-md-4 pl-lg-4 pr-lg-4 pl-xl-5 pr-xl-5 pt-2 pb-2">
 						Результати
 					</button>
@@ -179,7 +179,7 @@
 			<div id="add_res_block" class="container offset-1 col-10 offset-sm-2 offset-lg-3 offset-xl-3 col-sm-8 col-lg-6 col-xl-6 p-0 mb-3 border-dark">
 				<div class="container pt-1 col-12 d-flex">
 					<p class="m-0 p-0 col-5 d-flex justify-content-center align-items-center">Дата<span>: </span></p>
-					<input type="text" class="form-control p-0 pl-1" id="data_input" name="date" placeholder="xx.xx.xxxx">
+					<input type="text" class="form-control p-0 pl-1 col-7" id="data_input" name="date" placeholder="xx.xx.xxxx">
 				</div>
 				<div class="container pt-1 col-12 d-flex">
 					<p class="m-0 p-0 col-5 d-flex justify-content-center">Вправа<span>: </span></p>
@@ -188,8 +188,8 @@
 				<form id="res_input_form" class="container">		
 					<div id="input_res_box" class="container col-12 col-md-10 col-xl-8 d-flex p-0 mb-2 rounded">
 						<label id="ex_try_num" for="weight_input count_input" class="col-1 d-flex justify-content-center align-items-center p-0 m-0">1</label>
-						<input type="numbers" class="form-control p-0 col-5" id="weight_input" name="weight" placeholder=" Вага">
-						<input type="numbers" class="form-control p-0 col-6" id="count_input" name="count" placeholder=" Кількість">
+						<input type="numbers" class="form-control p-0 pl-1 col-5" id="weight_input" name="weight" placeholder="Вага">
+						<input type="numbers" class="form-control p-0 pl-1 col-6" id="count_input" name="count" placeholder="Кількість">
 					</div>
 
 					<div class="col-12 p-0 mb-2 d-flex justify-content-center">
@@ -293,14 +293,14 @@
 			<div id="footer_menu" class="row d-flex justify-content-center">   
 				<ul id="footer_menu_block" class="text-center mb-0 pl-0">
 				  <li class="p-1">
-				  	<a href ="index.html">Головна</a>
+				  	<a href ="/index.html">Головна</a>
 				  </li>
 				  <li class="p-1">
 				  	<a href="#">Інформація</a>
 				  </li>
 
 				  <li class="p-1">
-				  	<a href="#">Тренування</a>
+				  	<a href="/training.html">Тренування</a>
 				  </li>
 				  <li class="p-1">
 				  	<a href="#">Відгуки та пропозиції</a>

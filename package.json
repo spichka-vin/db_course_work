@@ -1,0 +1,22 @@
+{
+  "name": "backend",
+  "version": "0.1.0",
+  "description": "Courese work`s backend",
+  "main": "server.js",
+  "scripts": {
+    "test": "start"
+  },
+  "author": "spichka.vin",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "body-parser": "^1.19.0",
+    "cryptr": "^6.0.1",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "http": "0.0.0",
+    "mysql": "^2.17.1",
+    "nodemon": "^2.0.2",
+    "url": "^0.11.0"
+  }
+}
