@@ -2,7 +2,7 @@ var express = require("express");
 var bodyParser = require('body-parser');
 var connection = require('./source/config');
 var app = express();
-const port == process.env.PORT || 3333;
+const port = process.env.PORT || 8080;
 
 var authenticateController=require('./source/authenticate-controller');
 var registerController=require('./source/register-controller');
@@ -87,7 +87,7 @@ app.post('/login',authenticateController.authenticate);
 console.log(authenticateController);
 app.post('/controllers/register-controller', registerController.register);
 app.post('/controllers/authenticate-controller', authenticateController.authenticate);
-app.listen(8080);
+app.listen(port);
 
 
 
