@@ -2,6 +2,7 @@ var express = require("express");
 var bodyParser = require('body-parser');
 var connection = require('./source/config');
 var app = express();
+const port == process.env.PORT || 3333;
 
 var authenticateController=require('./source/authenticate-controller');
 var registerController=require('./source/register-controller');
