@@ -1,0 +1,19 @@
+<div id="settings_block" class="container offset-1 col-10 offset-sm-2 offset-lg-3 offset-xl-3 col-sm-8 col-lg-6 col-xl-6 p-0 mb-3">
+    <div id="search_type_box" class="d-flex col-12 align-items-center p-0 mt-3">
+        <button class="dropdown-toggle col-1 pl-1 pr-1" id="type_dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+        <p id="search_type_name_type" class="m-0 col-11 d-flex justify-content-center p-0">Тренування</p>
+        <div class="dropdown-menu" aria-labelledby="type_dropdownMenuButton">
+            <a class="dropdown-item" onclick="ChooseTrainingSort()">Тренування</a>
+            <a class="dropdown-item" onclick="ChooseExerciseSort()">Вправа</a>
+        </div>
+    </div>
+    <script>
+        ChooseTrainingSort();
+    </script>
+    <div id="search_last_box" class="d-flex col-12 align-items-center p-0 mt-3">
+        <button class="dropdown-toggle col-1 pl-1 pr-1" id="last_dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+        <p id="search_type_name" class="m-0 col-11 d-flex justify-content-center p-0">Тренування</p>
+        <div id="second_dropdown_box" class="dropdown-menu" aria-labelledby="last_dropdownMenuButton">
+        </div>
+    </div>
+</div>

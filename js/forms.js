@@ -108,22 +108,32 @@ function ResetLogin(){
 	document.getElementById("log_in_inputEmail").value = "";
 	document.getElementById("log_in_inputPassword").value = "";
 }
+function LoginDataConverter(arg){
+	let res = {
+		'email': arg[0].value,
+		'password': arg[1].value,
+	}
+	return res;
+}
 function LoginFormResult(){
 	let form_array = GetValues($("#log_in_form"));
-	let tmp = LoginCompression(form_array);
-	console.log(tmp);
 	let flag = LoginErrorsMatching(form_array);
 	if(flag){
-		httpGetAsync('/login', (res)=>LoginCorrect(res));
+		let form = LoginDataConverter(form_array);
+		console.log(form);
+		$.ajax(
+		{
+			 url: '/login',
+			 type: "POST",
+			 data: form,
+			 dataType: 'json',
+			 async: true,
+			 success: function() {
+				window.location.reload();
+			}
+		});
 	}		
 }
-function LoginCorrect(arg){
-	console.log(arg);
-}
-
-
-
-
 
 
 
@@ -177,6 +187,8 @@ function ResetSignin(){
 	InputBorderChangesReset($("#sign_in_inputPassword"));
 	ShowPasswordButtonCahngesReset($("#sign_in_show_password_btn"));
 	ShowPasswordButtonCahngesReset($("#sign_in_show_password_repeat_btn"));
+	document.getElementById("sign_in_inputNickname").value = "";
+	document.getElementById("sign_in_inputEmail").value = "";
 	document.getElementById("sign_in_inputPassword").value = "";
 	document.getElementById("sign_in_inputPasswordRepeat").value = "";
 }
@@ -193,9 +205,7 @@ function SigninFormResult(){
 	let form_array = GetValues($("#sign_in_form"));
 	let flag = SigninErrorsMatching(form_array);
 	let form = SigninDataConverter(form_array);
-	console.log(form);
 	if(flag){
-		//httpPostAsync("/signin",form ,(res) => SigninAcception(res));
 		$.ajax(
 	   {
 	        url: "/signin",
@@ -204,11 +214,24 @@ function SigninFormResult(){
 	        dataType: 'json',
 	        async: true,
 	        success: function(msg) {
-	            alert(msg);
+	            alert(msg.message);
+	            if(msg.status){
+	            	ResetSignin();
+	            $('.close').click();
+	            }
 	        }
 	    });
 	}		
 }
-function SigninAcception(arg){
-	console.log(arg);
+
+
+function LogOut(){
+	$.ajax({
+		url: "/logout",
+		type: "DELETE",
+		async: true,
+		success: function(){
+			window.location.reload();
+		}
+	});
 }

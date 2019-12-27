@@ -1,235 +1,194 @@
-var express = require("express");
-var bodyParser = require('body-parser');
-var connection = require('./source/config');
-var app = express();
-const port = process.env.PORT || 8080;
+const express = require("express");
+const bodyParser = require('body-parser');
+const passport = require('passport');
+const flash = require('express-flash');
+const session = require("express-session");
+const methodOverride = require('method-override');
+const url = require('url');    
 
-var authenticateController=require('./source/authenticate-controller');
 var registerController=require('./source/register-controller');
- 
-app.use(bodyParser.urlencoded({extended:true}));
+const initializePassport = require('./source/passport-config')
+const connection = require('./source/config');
+const train = require('./source/traning_lib');
+const results = require('./source/results_lib');
+const port = process.env.PORT || 8080;
+const app = express();
+initializePassport(
+  passport
+);
+
+app.set('view-engine', 'ejs')
+app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(flash());
 
+app.use(session({
+   secret: '343ji43ssdhsytukpoiuvcsaijvnm3jn4jk3n',
+   resave: false,
+   saveUninitialized: false,
+   cookie : { secure : false, maxAge : (4 * 60 * 60 * 1000) }
+}));
 
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(methodOverride('_method'));
+
+function checkAuthenticated(req) {
+   let flag = false;
+   if (req.isAuthenticated()) {
+      flag = true;
+   }
+      return(flag);
+}
+
+//-------------------------------------------------
 app.get('/', function (req, res) {  
-   res.sendFile( __dirname + "/" + "index.html" );  
-})
-app.get('/index.html', function (req, res) {  
-   res.sendFile( __dirname + "/" + "index.html" );  
-})
-app.get('/training.html', function (req, res) {  
-   res.sendFile( __dirname + "/" + "training.html" );  
-})
-app.get('/results.html', function (req, res) {  
-   res.sendFile( __dirname + "/" + "results.html" );  
-})
+   let auth = checkAuthenticated(req);
+   if(auth){
+      res.render('index.ejs', {auth: auth, name: req.passport.nickname});
+   }
+   else{
+      res.render('index.ejs', {auth: auth});
+   }
+ })
+ app.get('/index', function (req, res) {  
+   let auth = checkAuthenticated(req);
+   if(auth){
+      let name = " " + req.session.passport.user.nickname;
+      
+      res.render('index.ejs', {auth: auth, name: name});
+   }
+   else{
+      res.render('index.ejs', {auth: auth});
+   }
+ });
+ app.get('/training', function (req, res) {  
+   let auth = checkAuthenticated(req);
+   if(auth){
+      let name = " " + req.session.passport.user.nickname;
+      res.render('training.ejs', {auth: auth, name: name});
+   }
+   else{
+      res.render('training.ejs', {auth: auth});
+   } 
+ });
+ app.get('/results', function (req, res) {  
+   let auth = checkAuthenticated(req);
+   if(auth){
+      let name = " " + req.session.passport.user.nickname;
+      res.render('results.ejs', {auth: auth, name: name});
+   }
+   else{
+      res.render('results.ejs', {auth: auth});
+   }  
+ });
 
-app.get('/css/style.css', function (req, res) {  
-   res.sendFile( __dirname + "/" + "css/style.css" );  
-})
-app.get('/css/forms.css', function (req, res) {  
-   res.sendFile( __dirname + "/" + "css/forms.css" );  
-})
-app.get('/css/normalize.css', function (req, res) {  
-   res.sendFile( __dirname + "/" + "css/normalize.css" );  
-})
-app.get('/css/results.css', function (req, res) {  
-   res.sendFile( __dirname + "/" + "css/results.css" );  
-})
-app.get('/css/training.css', function (req, res) {  
-   res.sendFile( __dirname + "/" + "css/training.css");  
-})
-
-
+ //-------------------------------------------------
+ app.get('/css/style.css', function (req, res) {  
+    res.sendFile( __dirname + "/" + "css/style.css" );  
+ })
+ app.get('/css/forms.css', function (req, res) {  
+    res.sendFile( __dirname + "/" + "css/forms.css" );  
+ })
+ app.get('/css/normalize.css', function (req, res) {  
+    res.sendFile( __dirname + "/" + "css/normalize.css" );  
+ })
+ app.get('/css/results.css', function (req, res) {  
+    res.sendFile( __dirname + "/" + "css/results.css" );  
+ })
+ app.get('/css/training.css', function (req, res) {  
+    res.sendFile( __dirname + "/" + "css/training.css");  
+ })
+ 
+//---------------------------------------------------
 app.get('/res/font/agabus.ttf', function (req, res) {  
-   res.sendFile( __dirname + "/" + "res/font/agabus.ttf" );  
-})
-app.get('/res/font/karet.ttf', function (req, res) {  
-   res.sendFile( __dirname + "/" + "res/font/karet.ttf" );  
-})
-
-
+    res.sendFile( __dirname + "/" + "res/font/agabus.ttf" );  
+ })
+ app.get('/res/font/karet.ttf', function (req, res) {  
+    res.sendFile( __dirname + "/" + "res/font/karet.ttf" );  
+ })
+ 
+//----------------------------------------------------
 app.get('/js/forms.js', function (req, res) {  
-   res.sendFile( __dirname + "/" + "js/forms.js" );  
-})
-
-app.get('/res/img/show_password.png', function (req, res) {  
-   res.sendFile( __dirname + "/" + "res/img/show_password.png" );  
-})
-app.get('/res/img/menu.png', function (req, res) {  
-   res.sendFile( __dirname + "/" + "res/img/menu.png" );  
-})
-
-app.get('/res/photo/slider_photo1.jpg', function (req, res) {  
-   res.sendFile( __dirname + "/" + "res/photo/slider_photo1.jpg" );  
-}) 
-app.get('/res/photo/slider_photo2.jpg', function (req, res) {  
-   res.sendFile( __dirname + "/" + "res/photo/slider_photo2.jpg" );  
-}) 
-app.get('/res/photo/slider_photo3.jpg', function (req, res) {  
-   res.sendFile( __dirname + "/" + "res/photo/slider_photo3.jpg" );  
-}) 
-app.get('/res/photo/slider_photo4.jpg', function (req, res) {  
-   res.sendFile( __dirname + "/" + "res/photo/slider_photo4.jpg" );  
-})  
- 
-
-
-// app.get('*', function (req, res) {  
-//    res.sendFile( __dirname + "/" + "trash/error.html" );  
-// })
-
-/* route to handle login and registration */
-app.post('/signin',registerController.register);
-app.post('/login',authenticateController.authenticate);
- 
-console.log(authenticateController);
+    res.sendFile( __dirname + "/" + "js/forms.js" );  
+ });
+ app.get('/js/training.js', function (req, res) {  
+   res.sendFile( __dirname + "/" + "js/training.js" );  
+});
+app.get('/js/results.js', function (req, res) {  
+   res.sendFile( __dirname + "/" + "js/results.js" );  
+});
+ //---------------------------------------------------
+ app.get('/res/img/show_password.png', function (req, res) {  
+    res.sendFile( __dirname + "/" + "res/img/show_password.png" );  
+ })
+ app.get('/res/img/menu.png', function (req, res) {  
+    res.sendFile( __dirname + "/" + "res/img/menu.png" );  
+ })
+ //----------------------------------------------------
+ app.get('/res/photo/slider_photo1.jpg', function (req, res) {  
+    res.sendFile( __dirname + "/" + "res/photo/slider_photo1.jpg" );  
+ }) 
+ app.get('/res/photo/slider_photo2.jpg', function (req, res) {  
+    res.sendFile( __dirname + "/" + "res/photo/slider_photo2.jpg" );  
+ }) 
+ app.get('/res/photo/slider_photo3.jpg', function (req, res) {  
+    res.sendFile( __dirname + "/" + "res/photo/slider_photo3.jpg" );  
+ }) 
+ app.get('/res/photo/slider_photo4.jpg', function (req, res) {  
+    res.sendFile( __dirname + "/" + "res/photo/slider_photo4.jpg" );  
+ }) 
+//-------------------------------------------------------
+app.get('*', function (req, res) { 
+    res.sendFile( __dirname + "/" + "trash/error.html" );  
+ })
+ //------------------------------------------------------
+ app.post('/signin',registerController.register, function() {
+ });
+app.post('/login', passport.authenticate('local'), function (req, res) {
+    res.json({
+      status: true,
+      message: "Log in seccessfully"
+    });
+    //load main page
+ });
+ //------------------------------------------------------
+app.post('/muscles', train.GetMuscles, function() {
+});
+app.post('/exercises', train.GetExercises, function() {
+});
+app.post('/exercise/muscle', train.GetMuscleByExercise, function() {
+});
+app.post('/training/add', train.InsertNewTraining, function() {
+});
+app.post('/trainings/list', train.GetTrainings, function() {
+});
+app.post('/training/exersise/list', train.GetTrainingExercises, function() {
+});
+app.delete(('/training/delete'), train.DeleteTraining, function(){
+});
+//-------------------------------------------------------
+app.post('/results/add', results.InsertNewResults, function() {
+});
+app.post('/training/results/get', results.GetTrainingResults, function() {
+});
+app.post('/results/exercise/list', results.GetUserExercises, function() {
+});
+app.post('/exercise/results/get', results.GetExerciseResults, function() {
+});
+//-------------------------------------------------------
+ app.delete('/logout', function(req, res) {
+   req.logout(); 
+   res.json({ 
+       status: "logout"
+   });
+});
 app.post('/controllers/register-controller', registerController.register);
-app.post('/controllers/authenticate-controller', authenticateController.authenticate);
-app.listen(port);
+//router.post('/controllers/authenticate-controller', authenticateController.authenticate);
 
+//--------------------------------------------------------
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// http.createServer(function (req, res){
-
-// 	try{
-// 		let reqUrl = req.url.replace('/', '');
-
-// 		if(StrInclude(reqUrl,'LogIn')){
-// 			console.log("1111111111111111111111");
-//       		mysqlOpt.query('select * from sportsmen;', function(err, rows, fields){
-//         		if (err) throw err;
-//         		res.writeHead(200,{'Content-type':'text/plain'});
-//         	res.end(JSON.stringify(rows));
-//         	console.log(res);
-//      	 	})
-//      	 	return 0;
-//     	}
-
-//     	if(StrInclude(reqUrl, 'SignIn')){
-//     		SignIn(req, res);
-//     		return 0;
-//     	}
-
-		
-
-// 	// addUser();
-// }).listen(port)
-
-// //-----------------------------------------------
-
-// function SignIn(req, res){
-// 	processPost(req, res, function(){
-//     	var array = req.post;
-//     	console.log(req.post);
-// 		console.log(array[0]);
-//     	res.writeHead(200, "OK", {'Content-Type': 'text/plain'});
-//         res.end();
-// 	});
-// }
-
-
-
-// // ----------------------------------------------
-
-// function ContentTypeOfUrl(url){
-// 	if (url.indexOf('.css') >= 0){
-// 		return 'text/css';
-// 	}
-// 	if (url.indexOf('.js') >= 0){
-// 		return 'text/script';
-// 	}
-// 	return 'text/html';
-// }
-// function FileExists(pathFile){
-// 	if (fs.existsSync(pathFile)) {
-//     	return 1;
-// 	}
-// 	return 0;
-// }
-// function StrInclude(url, part) {
-// 	if(url.indexOf(part) >= 0){
-// 		return true;
-// 	}
-// 	return false;
-// }
-// function processPost(request, response, callback) {
-//     var queryData = "";
-//     if(typeof callback !== 'function') return null;
-
-//     if(request.method == 'POST') {
-//         request.on('data', function(data) {
-//             queryData += data;
-//             if(queryData.length > 1e6) {
-//                 queryData = "";
-//                 response.writeHead(413, {'Content-Type': 'text/plain'}).end();
-//                 request.connection.destroy();
-//             }
-//         });
-
-//         request.on('end', function() {
-//             request.post = JSON.parse(queryData);
-//             callback();
-//         });
-
-//     } else {
-//         response.writeHead(405, {'Content-Type': 'text/plain'});
-//         response.end();
-//     }
-// }
-
-
-
-
-
-
-
-
-
-
-
-// var loginUserSQL = `loginUser("${userEmail}", "${userPassword}")`;
-// var queryLoginUser = `select * from actor;` ;
-
-// var userEmail = "spichka.vin@gmail.com"
-// var userPassword = "0000"
-
-// function loginUser(){
-// mysqlOpt.query(queryLoginUser, function(err,rows,fields){
-// if(err) throw err;
-// console.log(rows);
-// for (var i in rows) {
-// console.log("Post titles: ", rows[i]);
-// }
-// Object.keys(rows).forEach(function(key){
-// console.log(rows[key].first_name);
-// 	});
-// });
-// }
-
-// var insertUserSQL = `call APP_USERS_BASE_INSERT("${userEmail}", "${userPassword}")`;
-
-// function addUser(){
-// 	mysqlOpt.query(insertUserSQL, function(err,rows,fields){
-// 		if(err) throw err;
-// 		console.log(err);
-// 	});
-// }
-
-
+app.listen(port, (err)=>{
+    if(err) throw err;
+ });
+ module.exports = app;

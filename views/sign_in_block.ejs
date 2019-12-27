@@ -1,0 +1,50 @@
+<div class="modal fade" id="sign_in_block" tabindex="-1" role="dialog" aria-labelledby="signinModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="block_lable">Sign in</h5>
+                <button class="close" data-dismiss="modal" aria-label="Close" onclick="ResetSignin()">
+                    <span aria-hidden="true" class="p-1">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form id="sign_in_form" action="#" onsubmit="return false">
+
+                        <div class="form-group">
+                            <label id="row_label" for="sign_in_inputNickname" class="">Nickname<span id="necessary">*</span></label>
+                            <input type="text" class="form-control" id="sign_in_inputNickname" name="nickname" aria-descridby="emailHelp" placeholder="Nickname">
+                            <small id="emailHelp" class="form-text text-muted">Enter your nickname (letters and numbers)</small>
+                        </div>
+                        <div class="form-group">
+                            <label id="row_label" for="sign_in_inputEmail" class="">Email address<span id="necessary">*</span></label>
+                            <input type="text" class="form-control" id="sign_in_inputEmail" name="email" aria-descridby="emailHelp" placeholder="Email">
+                            <small id="emailHelp" class="form-text text-muted">Enter your email</small>
+                        </div>
+                        <div class="form-group">
+                            <label id="row_label" for="sign_in_inputPassword" class="">Password<span id="necessary">*</span></label>
+                            <div class=" d-flex">
+                                <input type="password" class="form-control" id="sign_in_inputPassword" name="password" placeholder="Password">
+                                <button id="sign_in_show_password_btn" class="rounded-right" onclick="ShowPassword('sign_in_inputPassword')">
+                                    <img id="show_password_img" src="res/img/show_password.png">
+                                </button>
+                            </div>	
+                            <small id="passwordHelp" class="form-text text-muted">Password have to consider more then 3 and less then 50 characters (letters and numders)</small>
+                        </div>
+                        <div class="form-group">
+                            <label id="row_label" for="sign_in_inputPasswordRepeat" class="">Repeat password<span id="necessary">*</span></label>
+                            <div class=" d-flex">
+                                <input type="password" class="form-control" id="sign_in_inputPasswordRepeat" name="password_repeat" placeholder="Password">
+                                <button id="sign_in_show_password_repeat_btn" class="rounded-right" onclick="ShowPassword('sign_in_inputPasswordRepeat')">
+                                    <img id="show_password_img" src="res/img/show_password.png">
+                                </button>
+                            </div>	
+                            <small id="passwordHelp" class="form-text text-muted">Repeat your password</small>
+                        </div>
+                        <button id="sign_in_btn" type="submit" class="btn btn-primary m-2 border-dark pt-1 pb-1" onclick="SigninFormResult()">Sign in</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
