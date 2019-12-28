@@ -141,6 +141,7 @@ module.exports.InsertNewTraining = async function(req, res){
                 resolve(tmp);
             });
             let id = await promise;
+            console.log(id);
             let params = [id[0].id, 0, req.body.name, JSON.stringify({arr: JSON.parse(req.body.arr)})];
             connection.query(select, params, function (error, results, fields){
                 if (error) {

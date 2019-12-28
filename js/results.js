@@ -265,7 +265,6 @@ function AllValidation(el){
 //---------------------------------------------------
 
 function ShowTrRes(){
-    AddResBlock();
     AddExistingTrResults();
 }
 
@@ -339,23 +338,30 @@ function AddExistingTrResults(){
         async: true,
         success: function(ans) {
             let arr = ans.arr;
-            let date = arr[0].date;
-            AdMyResInfoBlock();
-            AddDateLine(date);
-            for(let i = 0; i < arr.length; i++){
-                let new_date = arr[i].date;
-                if(date != new_date){
-                    date = new_date;
-                    AdMyResInfoBlock();
-                    AddDateLine(date);
-                }        
-                AddExerciseLine(arr[i].name);   
-                AddBoxForResLines();      
-                let el = JSON.parse(arr[i].res);
-                for(let j = 0; j < el.arr.length; j++){
-                    AddResultsLine(j+1,el.arr[j].weigth, el.arr[j].repeats);
+            if(arr.length != 0){   
+                AddResBlock();
+                let date = arr[0].date;
+                AdMyResInfoBlock();
+                AddDateLine(date);
+                for(let i = 0; i < arr.length; i++){
+                    let new_date = arr[i].date;
+                    if(date != new_date){
+                        date = new_date;
+                        AdMyResInfoBlock();
+                        AddDateLine(date);
+                    }        
+                    AddExerciseLine(arr[i].name);   
+                    AddBoxForResLines();      
+                    let el = JSON.parse(arr[i].res);
+                    for(let j = 0; j < el.arr.length; j++){
+                        AddResultsLine(j+1,el.arr[j].weigth, el.arr[j].repeats);
+                    }
                 }
             }
+            else{
+                alert('У вас немає результатів тренувань');
+            }
+            
         }
     });
 }
@@ -407,7 +413,6 @@ function ExerciseClick(el){
 }
 
 function ShowExRes(){
-    AddResBlock();
     AddExistingExResults();
 }
 
@@ -429,6 +434,7 @@ function AddExistingExResults(){
                 alert('У вас немає результатів по цій вправі');
             }
             else{
+                AddResBlock();
                 let date = arr[0].date;
                 AdMyResInfoBlock();
                 AddDateLine(date);

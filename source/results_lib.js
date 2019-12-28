@@ -60,6 +60,7 @@ GetTrainingId = async function (email, name) {
         let tmp = "";
         connection.query(select, [email, name], function (error, results, fields){
             if (error) {
+                console.log(error);
                 console.log('Id training id search error');
             }
             else{
