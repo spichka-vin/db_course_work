@@ -1,23 +1,19 @@
 @import url('normalize.css');
 @font-face{
-	font-family: Agabus;
-	src: url(../res/font/agabus.ttf);
-}
-@font-face{
-	font-family: Karet;
-	src: url(../res/font/karet.ttf);
+	font-family: Vodafone;
+	src: url(../res/font/vodafone.ttf);
 }
 
 #body {
 	background-color: #949EAF;
 	color: black;
 	font-size: 18px;
-	font-family: Karet;
+	font-family: Vodafone;
 }
 
 
 #main_title {
-	font-family: Agabus;
+	font-weight: bold;
 	font-size: 28px;
 }
 #menu_img {
@@ -47,8 +43,9 @@
 .dropdown-menu {
 	background-color: #dce3ef;
 }
-.dropdown-item {
-	font-size: 20px;
+#dropdown_item {
+	font-size: 18px;
+	white-space: normal;
 }
 #user_info_text {
 	font-size: 16px;
@@ -65,7 +62,7 @@
 
 
 #page_title{
-	font-family: Agabus;
+	font-weight: bold;
 	font-size: 26px;
 }
 #site_content {
@@ -77,7 +74,7 @@
 	background-color: #61656C;
 }
 #footer_title {
-	font-family: Agabus;
+	font-weight: bold;
 	font-size: 24px;
 }
 #footer_menu_block li a {
@@ -96,8 +93,11 @@
 }
 
 @media (max-width: 400px){
+	#body {
+		font-size: 16px;
+	}
 	#main_title {
-		font-size: 24px;
+		font-size: 22px;
 	}
 }
 @media (min-width: 480px){
@@ -107,7 +107,7 @@
 	#body {
 		font-size: 20px;
 	}
-	.dropdown-item {
+	#dropdown_item {
 		font-size: 22px;
 	}
 	#user_info_text {
@@ -139,7 +139,7 @@
 	#body {
 		font-size: 22px;
 	}
-	.dropdown-item {
+	#dropdown_item {
 		font-size: 24px;
 	}
 	#user_info_text {
@@ -179,13 +179,3 @@
 		font-size: 34px;
 	}
 }
-
-
-/*Optional codes*/
-/* #user_info_text {
-	display: none;
-}
-#log_out_btn_main	{
-	display: none;
-} */
-/*--------------*/

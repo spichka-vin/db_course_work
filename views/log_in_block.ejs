@@ -3,7 +3,7 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <h5 class="modal-title" id="block_lable">Log in</h5>
+                <h5 class="modal-title" id="block_lable">Вхід</h5>
                 <button class="close" data-dismiss="modal" aria-label="Close" onclick="ResetLogin()">
                     <span aria-hidden="true" class="p-1">&times;</span>
                 </button>
@@ -14,23 +14,23 @@
                     <form id="log_in_form" action="#" onsubmit="return false">
 
                         <div class="form-group">
-                            <label id="row_label" for="log_in_inputEmail" class="">Email address<span id="necessary">*</span></label>
+                            <label id="row_label" for="log_in_inputEmail" class="">Електронна пошта<span id="necessary">*</span></label>
                             <input type="text" class="form-control" id="log_in_inputEmail" name="email" aria-descridby="emailHelp" placeholder="Email">
-                            <small id="emailHelp" class="form-text text-muted">Enter your email</small>
+                            <small id="emailHelp" class="form-text text-muted">Введіть електроннну пошту</small>
                         </div>
 
                         <div class="form-group">
-                            <label id="row_label" for="log_in_inputPassword" class="">Password<span id="necessary">*</span></label>
+                            <label id="row_label" for="log_in_inputPassword" class="">Пароль<span id="necessary">*</span></label>
                             <div class=" d-flex">
                                 <input type="password" class="form-control" id="log_in_inputPassword" name="password" placeholder="Password">
                                 <button id="log_in_show_password_btn" class="rounded-right" onclick="ShowPassword('log_in_inputPassword')">
                                     <img id="show_password_img" src="res/img/show_password.png">
                                 </button>
                             </div>	
-                            <small id="passwordHelp" class="form-text text-muted">Password have to consider more then 3 and less then 50 characters (letters and numbers)</small>
+                            <small id="passwordHelp" class="form-text text-muted">Пароль повинен містити більше ніж 3 і менше ніж 50 символів (латинські букви та цифри)</small>
                         </div>
 
-                        <button id="log_in_btn" type="submit" class="btn btn-primary m-2 border-dark pt-1 pb-1" onclick="LoginFormResult()">Log in</button>
+                        <button id="log_in_btn" type="submit" class="btn btn-primary m-2 border-dark pt-1 pb-1" onclick="LoginFormResult()">Увійти</button>
                     </form>
                 </div>
             </div>

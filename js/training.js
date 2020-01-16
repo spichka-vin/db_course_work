@@ -70,8 +70,8 @@ function ShowExersiseRow(list, box){
         el = list[i];
         let row = `
         <div class="d-flex col-12 p-0 mt-1 mb-1">
-            <p id="ex_num" class="m-0  p-0 col-1 d-flex justify-content-center">${i+1}</p>
-            <p id="ex_name" class="m-0 p-0 col-11 d-flex justify-content-center">${el}</p>
+            <p id="ex_num" class="m-0  p-0 col-1 d-flex justify-content-center align-items-center">${i+1}</p>
+            <p id="ex_name" class="m-0 p-0 pl-1 col-11 d-flex justify-content-center align-items-center">${el}</p>
         </div>`
         box.innerHTML += row;
     }
@@ -229,7 +229,7 @@ function CreateMuscleList(array){
     let el;
     for (let i = 0; i < array.length; i++){
         el = array[i];
-        let layout = `<a class="dropdown-item border-bottom border-top" onclick="MuscleSelected(this)">${el}</a>`
+        let layout = `<a id="dropdown_item" class="dropdown-item border-bottom border-top" onclick="MuscleSelected(this)">${el}</a>`
         res +=  layout;
     }
     return res;
@@ -240,7 +240,7 @@ function CreateExerciseList(array){
     let el;
     for (let i = 0; i < array.length; i++){
         el = array[i];
-        let layout = `<a class="dropdown-item border-bottom border-top" onclick="ExerciseSelected(this)">${el}</a>`
+        let layout = `<a id="dropdown_item" class="dropdown-item border-bottom border-top" onclick="ExerciseSelected(this)">${el}</a>`
         res +=  layout;
     }
     return res;

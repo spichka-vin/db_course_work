@@ -33,7 +33,6 @@
 	border-radius: 0px;
 	border-color: #CCCCCC;
 	background-color: #CCCCCC;
-	font-size: 18px;
 }
 #go_to_res_btn {
 	border-radius: 0px;
@@ -82,9 +81,6 @@
 	border: solid;
 	border-width: thin;
 }
-.dropdown-toggle {
-	font-size: 18px;
-}
 #confirm_training_btn {
 	background-color: #CCCCCC;
 }
@@ -99,9 +95,6 @@
 	#treining_menu {
 		font-size: 22px;
 	}
-	.dropdown-toggle{
-		font-size: 20px;
-	}
 }
 @media (min-width: 760px){
 	#site_content {
@@ -109,9 +102,6 @@
 	}
 	#treining_menu {
 		font-size: 24px;
-	}
-	.dropdown-toggle{
-		font-size: 22px;
 	}
 }
 @media (min-width: 1020px){

@@ -37,7 +37,7 @@ function TrainingListCreate(arr){
     let el = "";
     for (let i = 0; i < arr.length; i++){
         el = arr[i];
-        let str = `<a class="dropdown-item" onclick="TrainingClick(this)">${el}</a>`;
+        let str = `<a id="dropdown_item" class="dropdown-item" onclick="TrainingClick(this)">${el}</a>`;
         $('#second_dropdown_box').append(str);
     }
 }
@@ -145,7 +145,6 @@ function AddMoreInputLines(el){
     </div>`
     el.parentNode.insertAdjacentHTML('beforebegin', lines);
 }
-
 function DateValidation(date){
     let flag = true;
     if(date[2] != '.' || date[5] != '.' || date.length != 10){
@@ -165,7 +164,6 @@ function NumValidation(el){
     }
     return flag;
 }
-
 function SendResults(){
     let msg = CollectResults();  
     let flag = AllValidation(msg);
@@ -196,7 +194,6 @@ function SendResults(){
         });
     }
 }
-
 function CollectResults(){
     let box = $('#add_res_block');
     let num = box.children().length - 2;
@@ -228,7 +225,6 @@ function CollectResults(){
     console.log(msg);
     return msg;
 }
-
 function ReadInfo(el){
     let arr = [];
     for(let i = 0; i < el.children.length - 1; i++){
@@ -240,7 +236,6 @@ function ReadInfo(el){
     }
     return arr;
 }
-
 function AllValidation(el){
     let flag = true;
     if(!DateValidation(el.date)){
@@ -399,7 +394,7 @@ function ExerciseListCreate(arr){
     let el = "";
     for (let i = 0; i < arr.length; i++){
         el = arr[i];
-        let str = `<a class="dropdown-item" onclick="ExerciseClick(this)">${el}</a>`;
+        let str = `<a id="dropdown_item" class="dropdown-item" onclick="ExerciseClick(this)">${el}</a>`;
         $('#second_dropdown_box').append(str);
     }
 }

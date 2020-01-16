@@ -107,6 +107,9 @@ app.get('/res/font/agabus.ttf', function (req, res) {
  app.get('/res/font/karet.ttf', function (req, res) {  
     res.sendFile( __dirname + "/" + "res/font/karet.ttf" );  
  })
+ app.get('/res/font/vodafone.ttf', function (req, res) {  
+   res.sendFile( __dirname + "/" + "res/font/vodafone.ttf" );  
+})
  
 //----------------------------------------------------
 app.get('/js/forms.js', function (req, res) {  
