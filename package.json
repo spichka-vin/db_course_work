@@ -10,7 +10,7 @@
   "author": "spichka.vin",
   "license": "ISC",
   "dependencies": {
-    "async": "^3.1.0",
+    "async": "^3.2.2",
     "await": "^0.2.6",
     "axios": "^0.19.0",
     "bcrypt-nodejs": "0.0.3",
